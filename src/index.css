@@ -1,0 +1,44 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+
+  color-scheme: light dark;
+   font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+*{
+  margin: 0;
+  box-sizing: border-box;
+}
+
+button{
+  cursor: pointer;
+  border: none;
+}
+select{
+  border: none;
+}
+input{
+  outline: none;
+  border: none;
+}
+input:focus{
+  border: none;
+}
+
+input, select{
+  border-radius: 2.3px;
+  padding: 8px;
+}
+
+input:focus, select:focus{
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.7);
+}
+
+select{
+  cursor: pointer;
+}
