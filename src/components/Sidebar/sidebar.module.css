@@ -1,6 +1,5 @@
 .sidebar{
-    display: flex;
-
+    position: relative;
 }
 
 .actionButtons{
@@ -8,6 +7,9 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
+    z-index: 2;
+    background-color: var(--dark-primary);
 }
 
 .toolbarItem {
@@ -35,4 +37,46 @@
     background-color: #c5c5c5;
     bottom: 0;
     left: 0;
+}
+
+@keyframes show {
+    from{
+        right: 350px;
+        /* transform: translateX(-0); */
+        opacity: 1;
+    }
+    to{
+        opacity: 1;
+        right: -350px;
+        /* transform: translateX(350px); */
+      
+    }
+}
+
+@keyframes hide {
+    from{
+        opacity: 1;
+        right: -350px;
+        
+    }
+    to{
+        right: 350px;
+        opacity: 0;
+    }
+}
+.settingsContainer{
+    position: absolute;
+    height: 100%;
+    width: 350px;
+    right: 350px;
+    top: 0;
+    z-index: 1;
+    overflow-y: auto;
+}
+.settingsContainer.show{
+    animation: .3s show forwards;
+}
+
+.settingsContainer.hide{
+    animation:.5s hide forwards;
 }

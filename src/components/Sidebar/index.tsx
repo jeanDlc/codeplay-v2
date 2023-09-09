@@ -7,7 +7,16 @@ import { useState } from "react";
 import { Settings } from "../Settings";
 
 export const Sidebar = () => {
-  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [settingBarAnimation, setSettingBarAnimation] = useState<
+    "show" | "hide" | "none"
+  >("none");
+
+  const toggleSettings = () => {
+    setSettingBarAnimation((prev) => {
+      if (prev === "show") return "hide";
+      else return "show";
+    });
+  };
 
   return (
     <aside className={classes.sidebar}>
@@ -19,9 +28,13 @@ export const Sidebar = () => {
             data-action="close-settings-bar"
             className={clsx(
               classes.toolbarItem,
-              !isSettingsOpen && classes.isActive
+              ["hide", "none"].includes(settingBarAnimation) && classes.isActive
             )}
-            onClick={() => setIsSettingsOpen(false)}
+            onClick={() => {
+              if (settingBarAnimation === "show") {
+                setSettingBarAnimation("hide");
+              }
+            }}
           >
             <PageIcon />
           </button>
@@ -34,24 +47,23 @@ export const Sidebar = () => {
             id="btn-settings"
             className={clsx(
               classes.toolbarItem,
-              isSettingsOpen && classes.isActive
+              settingBarAnimation === "show" && classes.isActive
             )}
-            onClick={() => setIsSettingsOpen((prev) => !prev)}
+            onClick={toggleSettings}
           >
             <SettingsIcon />
           </button>
         </footer>
       </div>
-      {isSettingsOpen && (
-        <div
-          style={{
-            overflowY: "auto",
-            width: "350px",
-          }}
-        >
-          <Settings />
-        </div>
-      )}
+      <div
+        className={clsx(
+          classes.settingsContainer,
+          settingBarAnimation === "show" && classes.show,
+          settingBarAnimation === "hide" && classes.hide
+        )}
+      >
+        <Settings />
+      </div>
     </aside>
   );
 };
