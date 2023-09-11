@@ -46,3 +46,20 @@ iframe{
 .editor-js::after {
   background-image: url("./assets/js.svg");
 }
+
+.app input, select{
+  border-radius: 2.3px;
+  padding: 8px;
+}
+
+.app select:focus-visible{
+  outline: none;
+}
+
+.app input:focus, select:focus{
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.8);
+}
+
+.app select{
+  cursor: pointer;
+}

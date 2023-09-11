@@ -28,19 +28,3 @@ input{
   outline: none;
   border: none;
 }
-input:focus{
-  border: none;
-}
-
-input, select{
-  border-radius: 2.3px;
-  padding: 8px;
-}
-
-input:focus, select:focus{
-  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.7);
-}
-
-select{
-  cursor: pointer;
-}
