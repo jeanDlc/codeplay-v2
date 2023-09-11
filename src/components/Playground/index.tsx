@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+
 import Editor, { useMonaco } from "@monaco-editor/react";
 import { emmetHTML } from "emmet-monaco-es";
 import editorWorker from "monaco-editor/esm/vs/editor/editor.worker?worker";
@@ -11,6 +12,7 @@ import { createHtml } from "../../utils/createHtml";
 
 import { useEditorSettingsStore } from "../../store/useSettingStore";
 import { useLoadMonacoThemes } from "../../hooks/useLoadMonacoThemes";
+import { url } from "../../utils/urlHelper";
 
 self.MonacoEnvironment = {
   getWorker(_, label) {
@@ -35,19 +37,26 @@ export function Playground() {
 
   const settings = useEditorSettingsStore(({ settings }) => settings);
 
-  const [html, setHtml] = useState("");
-  const [css, setCss] = useState("");
-  const [js, setJs] = useState("");
+  const [data, setData] = useState<{ html: string; css: string; js: string }>(
+    url.getState()
+  );
+
+  const iFrameData = useMemo(() => createHtml(data), [data]);
+
+  const handleUpdate = (key: "html" | "css" | "js", value?: string) => {
+    setData((prev) => {
+      const newData = {
+        ...prev,
+        [key]: value,
+      };
+      url.setState(newData);
+      return newData;
+    });
+  };
 
   const monaco = useMonaco();
 
   useLoadMonacoThemes();
-
-  useEffect(() => {
-    if (iFrameRef.current) {
-      iFrameRef.current.setAttribute("srcdoc", createHtml({ css, html, js }));
-    }
-  }, [html, js, css]);
 
   useEffect(() => {
     if (monaco) {
@@ -60,8 +69,9 @@ export function Playground() {
       <Editor
         defaultLanguage="html"
         theme={settings.theme}
+        value={data.html}
         onChange={(value) => {
-          setHtml(value ?? "");
+          handleUpdate("html", value);
         }}
         options={settings}
         className="editor editor-html"
@@ -70,8 +80,9 @@ export function Playground() {
         theme={settings.theme}
         defaultLanguage="javascript"
         options={settings}
+        value={data.js}
         onChange={(value) => {
-          setJs(value ?? "");
+          handleUpdate("js", value);
         }}
         className="editor editor-js"
       />
@@ -79,12 +90,13 @@ export function Playground() {
         theme={settings.theme}
         defaultLanguage="css"
         options={settings}
+        value={data.css}
         onChange={(value) => {
-          setCss(value ?? "");
+          handleUpdate("css", value);
         }}
         className="editor editor-css"
       />
-      <iframe ref={iFrameRef}></iframe>
+      <iframe ref={iFrameRef} srcDoc={iFrameData}></iframe>
     </main>
   );
 }
