@@ -29,7 +29,6 @@ export const Sidebar = () => {
           <button
             aria-label="Playground"
             title="Playground"
-            data-action="close-settings-bar"
             className={clsx(
               classes.toolbarItem,
               ["hide", "none"].includes(settingBarAnimation) && classes.isActive
@@ -45,10 +44,8 @@ export const Sidebar = () => {
         </header>
         <footer>
           <button
-            title="Settings"
+            title="Preview"
             aria-label="Preview"
-            data-action="open-settings-bar"
-            id="btn-settings"
             className={clsx(classes.toolbarItem)}
             onClick={showPreview}
           >
@@ -57,8 +54,6 @@ export const Sidebar = () => {
           <button
             title="Settings"
             aria-label="Settings"
-            data-action="open-settings-bar"
-            id="btn-settings"
             className={clsx(
               classes.toolbarItem,
               settingBarAnimation === "show" && classes.isActive
