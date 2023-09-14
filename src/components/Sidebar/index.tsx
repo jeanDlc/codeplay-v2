@@ -5,6 +5,8 @@ import { SettingsIcon } from "../Icons/SettingsIcon";
 import classes from "./sidebar.module.css";
 import { useState } from "react";
 import { Settings } from "../Settings";
+import { RedirectionIcon } from "../Icons/RedirectionIcon";
+import { usePreview } from "../../hooks/usePreview";
 
 export const Sidebar = () => {
   const [settingBarAnimation, setSettingBarAnimation] = useState<
@@ -17,6 +19,8 @@ export const Sidebar = () => {
       else return "show";
     });
   };
+
+  const { showPreview } = usePreview();
 
   return (
     <aside className={classes.sidebar}>
@@ -40,6 +44,16 @@ export const Sidebar = () => {
           </button>
         </header>
         <footer>
+          <button
+            title="Settings"
+            aria-label="Preview"
+            data-action="open-settings-bar"
+            id="btn-settings"
+            className={clsx(classes.toolbarItem)}
+            onClick={showPreview}
+          >
+            <RedirectionIcon />
+          </button>
           <button
             title="Settings"
             aria-label="Settings"

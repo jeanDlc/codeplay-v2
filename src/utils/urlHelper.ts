@@ -1,7 +1,11 @@
 import { encode, decode } from "js-base64"; //now can encode emojis
+import { EditorValues } from "../types/editor.types";
 
 export const url = {
-  getState() {
+  /**
+   * @description get the decoded values of the editor from the url
+   */
+  getDecodedValues() {
     const { pathname } = window.location;
     const [html, css, js] = pathname.slice(1).split("%7C");
     return {
@@ -10,8 +14,11 @@ export const url = {
       js: decode(js || ""),
     };
   },
-  setState(state: { html: string; css: string; js: string }) {
-    const { html, css, js } = state;
+  /**
+   * @description Set the Editor values in the url
+   */
+  saveEncodedValues(values: EditorValues) {
+    const { html, css, js } = values;
     const hashedCode = `${encode(html)}|${encode(css)}|${encode(js)}`;
     window.history.replaceState(null, "", `/${hashedCode}`);
   },

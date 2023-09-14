@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef } from "react";
 
 import Editor, { useMonaco } from "@monaco-editor/react";
 import { emmetHTML } from "emmet-monaco-es";
@@ -12,7 +12,7 @@ import { createHtml } from "../../utils/createHtml";
 
 import { useEditorSettingsStore } from "../../store/useSettingStore";
 import { useLoadMonacoThemes } from "../../hooks/useLoadMonacoThemes";
-import { url } from "../../utils/urlHelper";
+import { useEditorValuesStore } from "../../store/useEditorValues";
 
 self.MonacoEnvironment = {
   getWorker(_, label) {
@@ -37,22 +37,11 @@ export function Playground() {
 
   const settings = useEditorSettingsStore(({ settings }) => settings);
 
-  const [data, setData] = useState<{ html: string; css: string; js: string }>(
-    url.getState()
-  );
+  const values = useEditorValuesStore(({ values }) => values);
 
-  const iFrameData = useMemo(() => createHtml(data), [data]);
+  const handleUpdate = useEditorValuesStore(({ update }) => update);
 
-  const handleUpdate = (key: "html" | "css" | "js", value?: string) => {
-    setData((prev) => {
-      const newData = {
-        ...prev,
-        [key]: value,
-      };
-      url.setState(newData);
-      return newData;
-    });
-  };
+  const iFrameData = useMemo(() => createHtml(values), [values]);
 
   const monaco = useMonaco();
 
@@ -69,7 +58,7 @@ export function Playground() {
       <Editor
         defaultLanguage="html"
         theme={settings.theme}
-        value={data.html}
+        value={values.html}
         onChange={(value) => {
           handleUpdate("html", value);
         }}
@@ -80,7 +69,7 @@ export function Playground() {
         theme={settings.theme}
         defaultLanguage="javascript"
         options={settings}
-        value={data.js}
+        value={values.js}
         onChange={(value) => {
           handleUpdate("js", value);
         }}
@@ -90,7 +79,7 @@ export function Playground() {
         theme={settings.theme}
         defaultLanguage="css"
         options={settings}
-        value={data.css}
+        value={values.css}
         onChange={(value) => {
           handleUpdate("css", value);
         }}

@@ -11,6 +11,10 @@
     z-index: 2;
     background-color: var(--dark-primary);
 }
+.actionButtons footer{
+    display: flex;
+    flex-direction: column;
+}
 
 .toolbarItem {
     padding: 1rem;
