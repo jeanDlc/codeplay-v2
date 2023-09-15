@@ -7,6 +7,8 @@ import { useState } from "react";
 import { Settings } from "../Settings";
 import { RedirectionIcon } from "../Icons/RedirectionIcon";
 import { usePreview } from "../../hooks/usePreview";
+import { ClipBoardIcon } from "../Icons/ClipBoardIcon";
+import { useSnackbarStore } from "../../store/useSnackbarStore";
 
 export const Sidebar = () => {
   const [settingBarAnimation, setSettingBarAnimation] = useState<
@@ -19,8 +21,17 @@ export const Sidebar = () => {
       else return "show";
     });
   };
+  const triggerSnackbar = useSnackbarStore(({ trigger }) => trigger);
 
   const { showPreview } = usePreview();
+
+  const copyUrlToClipBoard = () => {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      triggerSnackbar({
+        message: "correctly copied to clipboard",
+      });
+    });
+  };
 
   return (
     <aside className={classes.sidebar}>
@@ -43,6 +54,14 @@ export const Sidebar = () => {
           </button>
         </header>
         <footer>
+          <button
+            title="Copy to clipboard"
+            aria-label="Copy to clipboard"
+            className={clsx(classes.toolbarItem)}
+            onClick={copyUrlToClipBoard}
+          >
+            <ClipBoardIcon />
+          </button>
           <button
             title="Preview"
             aria-label="Preview"

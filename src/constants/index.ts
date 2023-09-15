@@ -1,3 +1,5 @@
+import type { IconProps } from "../types/index.types";
+
 export const EDITOR_COMMON_OPTIONS = {
   automaticLayout: true,
   fixedOverflowWidgets: true,
@@ -29,3 +31,8 @@ export const monacoAppThemes: Array<{
   { key: MonacoAppThemeKey.SOLARIZED_DARK, name: "Solarized Dark" },
   { key: MonacoAppThemeKey.DRACULA, name: "Dracula" },
 ];
+
+export const DEFAULT_ICON_PROPS: IconProps = {
+  color: "black",
+  outline: true,
+};

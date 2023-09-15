@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { url } from "../utils/urlHelper";
-import { EditorValues } from "../types/editor.types";
+import { EditorValues } from "../types/index.types";
 
 type EditorValuesState = {
   values: EditorValues;

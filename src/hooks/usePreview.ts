@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { createHtml } from "../utils/createHtml";
 import { useEditorValuesStore } from "../store/useEditorValues";
-import { EditorValues } from "../types/editor.types";
+import { EditorValues } from "../types/index.types";
 
 export const usePreview = () => {
   const [previewUrl, setPreviewUrl] = useState<string>();

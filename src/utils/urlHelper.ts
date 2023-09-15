@@ -1,5 +1,5 @@
 import { encode, decode } from "js-base64"; //now can encode emojis
-import { EditorValues } from "../types/editor.types";
+import type { EditorValues } from "../types/index.types";
 
 export const url = {
   /**

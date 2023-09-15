@@ -1,4 +1,5 @@
 import "./App.css";
+import { SnackbarWrapper } from "./components/Snackbar/SnackbarWrapper";
 import { Playground } from "./components/Playground";
 import { Sidebar } from "./components/Sidebar";
 
@@ -11,6 +12,7 @@ function App() {
           <Playground />
         </div>
       </div>
+      <SnackbarWrapper />
     </>
   );
 }
