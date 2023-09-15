@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { clsx } from "clsx";
 
 import { PageIcon } from "../Icons/PageIcon";
@@ -10,16 +11,34 @@ import { usePreview } from "../../hooks/usePreview";
 import { ClipBoardIcon } from "../Icons/ClipBoardIcon";
 import { useSnackbarStore } from "../../store/useSnackbarStore";
 
-export const Sidebar = () => {
-  const [settingBarAnimation, setSettingBarAnimation] = useState<
-    "show" | "hide" | "none"
-  >("none");
+type View = "playground" | "settings";
 
-  const toggleSettings = () => {
-    setSettingBarAnimation((prev) => {
-      if (prev === "show") return "hide";
-      else return "show";
-    });
+export const Sidebar = () => {
+  const toolBarRef = useRef<HTMLDivElement>(null);
+
+  const [currentView, setCurrentView] = useState<View>("playground");
+
+  const closeToolbar = () => {
+    if (toolBarRef.current) {
+      toolBarRef.current.classList.add(classes.hide);
+      toolBarRef.current.classList.remove(classes.show);
+      setCurrentView("playground");
+    }
+  };
+
+  const toggleToolbar = (view: View) => {
+    if (toolBarRef.current) {
+      if (!toolBarRef.current.classList.contains(classes.show)) {
+        //show toolbar
+        toolBarRef.current.classList.add(classes.show);
+        toolBarRef.current.classList.remove(classes.hide);
+        setCurrentView(view);
+      } else {
+        //hide toolbar
+        //initial view
+        closeToolbar();
+      }
+    }
   };
   const triggerSnackbar = useSnackbarStore(({ trigger }) => trigger);
 
@@ -42,11 +61,11 @@ export const Sidebar = () => {
             title="Playground"
             className={clsx(
               classes.toolbarItem,
-              ["hide", "none"].includes(settingBarAnimation) && classes.isActive
+              currentView === "playground" && classes.isActive
             )}
             onClick={() => {
-              if (settingBarAnimation === "show") {
-                setSettingBarAnimation("hide");
+              if (currentView !== "playground") {
+                closeToolbar();
               }
             }}
           >
@@ -75,21 +94,15 @@ export const Sidebar = () => {
             aria-label="Settings"
             className={clsx(
               classes.toolbarItem,
-              settingBarAnimation === "show" && classes.isActive
+              currentView === "settings" && classes.isActive
             )}
-            onClick={toggleSettings}
+            onClick={() => toggleToolbar("settings")}
           >
             <SettingsIcon />
           </button>
         </footer>
       </div>
-      <div
-        className={clsx(
-          classes.settingsContainer,
-          settingBarAnimation === "show" && classes.show,
-          settingBarAnimation === "hide" && classes.hide
-        )}
-      >
+      <div ref={toolBarRef} className={classes.settingsContainer}>
         <Settings />
       </div>
     </aside>
