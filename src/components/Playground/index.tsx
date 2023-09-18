@@ -85,7 +85,11 @@ export function Playground() {
         }}
         className="editor editor-css"
       />
-      <iframe ref={iFrameRef} srcDoc={iFrameData}></iframe>
+      <iframe
+        title="Preview of the code"
+        ref={iFrameRef}
+        srcDoc={iFrameData}
+      ></iframe>
     </main>
   );
 }
