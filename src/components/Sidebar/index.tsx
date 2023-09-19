@@ -45,11 +45,16 @@ export const Sidebar = () => {
   const { showPreview } = usePreview();
 
   const copyUrlToClipBoard = () => {
-    navigator.clipboard.writeText(window.location.href).then(() => {
-      triggerSnackbar({
-        message: "correctly copied to clipboard",
+    navigator.clipboard
+      .writeText(window.location.href)
+      .then(() => {
+        triggerSnackbar({
+          message: "Correctly copied to clipboard",
+        });
+      })
+      .catch((err) => {
+        console.log("Error when copying to clipboard", err);
       });
-    });
   };
 
   return (
@@ -76,7 +81,7 @@ export const Sidebar = () => {
           <button
             title="Copy to clipboard"
             aria-label="Copy to clipboard"
-            className={clsx(classes.toolbarItem)}
+            className={classes.toolbarItem}
             onClick={copyUrlToClipBoard}
           >
             <ClipBoardIcon />
@@ -84,7 +89,7 @@ export const Sidebar = () => {
           <button
             title="Preview"
             aria-label="Preview"
-            className={clsx(classes.toolbarItem)}
+            className={classes.toolbarItem}
             onClick={showPreview}
           >
             <RedirectionIcon />
