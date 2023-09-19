@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap');
 
 :root {
+  font-family: 'Inter', sans-serif;
   font-weight: 300;
   color-scheme: light dark;
   font-synthesis: none;
@@ -11,8 +12,9 @@
   --dark-primary:#0e0e0e;
   --dark-secondary:#121212;
 }
-*{
-  font-family: 'Inter', sans-serif;
+
+select{
+  font-family: inherit;
 }
 
 *{
@@ -20,14 +22,14 @@
   box-sizing: border-box;
 }
 
+button, select, input{
+  border: none;
+}
+
 button{
   cursor: pointer;
-  border: none;
 }
-select{
-  border: none;
-}
+
 input{
   outline: none;
-  border: none;
 }
