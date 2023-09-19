@@ -65,14 +65,15 @@ export const Snackbar = ({
       data-colo="red"
       className={clsx(classes.snackbar, styles)}
     >
-      <div aria-label="Info icon">{Icon}</div>
+      <div className={classes["icon-wrapper"]} aria-label="Info icon">
+        {Icon}
+      </div>
       <p> {message} </p>
       <button
         aria-label="Close snackbar"
         className={classes["close-button"]}
         onClick={handleCloseSnackbar}
         title="Close snackbar"
-        color="red"
       >
         <CloseIcon color="rgba(255,255,255, 0.5)" />
       </button>

@@ -8,6 +8,7 @@
 .snackbar{
     background-color: rgb(34, 34, 34);
     display: flex;
+    align-items: center;
     gap: 10px;
     z-index: 3;
     padding: 10px;
@@ -30,6 +31,10 @@
 .close-button{
     display: flex;
     background-color: transparent;
+}
+
+.icon-wrapper{
+  display: inherit;
 }
 
 
