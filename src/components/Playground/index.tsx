@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo } from "react";
 
 import Editor, { useMonaco } from "@monaco-editor/react";
 import { emmetHTML } from "emmet-monaco-es";
@@ -33,8 +33,6 @@ self.MonacoEnvironment = {
 };
 
 export function Playground() {
-  const iFrameRef = useRef<HTMLIFrameElement>(null);
-
   const settings = useEditorSettingsStore(({ settings }) => settings);
 
   const values = useEditorValuesStore(({ values }) => values);
@@ -85,11 +83,7 @@ export function Playground() {
         }}
         className="editor editor-css"
       />
-      <iframe
-        title="Preview of the code"
-        ref={iFrameRef}
-        srcDoc={iFrameData}
-      ></iframe>
+      <iframe title="Preview of the code" srcDoc={iFrameData}></iframe>
     </main>
   );
 }
