@@ -3,7 +3,6 @@
 :root {
   font-family: 'Inter', sans-serif;
   font-weight: 300;
-  color-scheme: light dark;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -11,10 +10,16 @@
   -webkit-text-size-adjust: 100%;
   --dark-primary:#0e0e0e;
   --dark-secondary:#121212;
+  --dark-form-component:#3b3b3b;
+  --text-color:#dfdfdf;
 }
 
 select{
   font-family: inherit;
+}
+
+body{
+  color: var(--text-color);
 }
 
 *{
