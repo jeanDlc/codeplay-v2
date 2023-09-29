@@ -1,27 +1,30 @@
-# React + TypeScript + Vite
+# Code Play V2
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+CodePlay V2 serves as a live editor for HTML, CSS, and JavaScript, enabling real-time code editing and immediate visual feedback. This iteration represents the second version of the Code Play editor.
+This application wasn't only rebuilt with new technologies but includes new features like:
 
-Currently, two official plugins are available:
+- Clipboard functionality
+- Full screen live preview
+- More settings
+- Cuztomizable themes
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Demo 🎮
 
-## Expanding the ESLint configuration
+You can visit the [Code Play V2 editor](https://codeplay-v2.vercel.app/) and start coding
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Stack
 
-- Configure the top-level `parserOptions` property like this:
+- React
+- TypeScript
+- CSS
+- Powered by [Vite](https://vitejs.dev/)
+- Hosted in [vercel](https://vercel.com/)
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+## Recomendation
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+This editor looks better on desktop devices, so make sure you're on a PC or tablet.
+After all, what kind of person programs on a phone? 👨‍💻
+
+## Older version (V1)
+
+You can also take a look to Code Play editor V1 [here](https://code-play.vercel.app/)
