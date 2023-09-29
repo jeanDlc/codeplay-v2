@@ -79,3 +79,10 @@ export const DEFAULT_ICON_PROPS: IconProps = {
   color: "black",
   outline: true,
 };
+
+export const BREAKPOINTS = {
+  md: 768,
+  lg: 992,
+  xl: 1200,
+  xxl: 1400,
+};
