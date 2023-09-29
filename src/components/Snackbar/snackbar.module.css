@@ -3,6 +3,7 @@
     bottom: 1rem;
     right: 1rem;
     overflow: hidden;
+    z-index: 4;
 }
 
 .snackbar{
@@ -10,7 +11,6 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    z-index: 3;
     padding: 10px;
     border-radius: 3px;
     margin-bottom: 10px;
