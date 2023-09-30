@@ -1,6 +1,7 @@
 import { useEffect, useMemo } from "react";
 
-import Editor, { useMonaco } from "@monaco-editor/react";
+import Editor, { useMonaco, loader } from "@monaco-editor/react";
+import * as monacoEditor from "monaco-editor";
 import { emmetHTML } from "emmet-monaco-es";
 import editorWorker from "monaco-editor/esm/vs/editor/editor.worker?worker";
 import cssWorker from "monaco-editor/esm/vs/language/css/css.worker?worker";
@@ -27,6 +28,8 @@ self.MonacoEnvironment = {
     return new editorWorker();
   },
 };
+
+loader.config({ monaco: monacoEditor });
 
 export function Playground() {
   const settings = useEditorSettingsStore(({ settings }) => settings);
