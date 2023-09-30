@@ -1,11 +1,3 @@
-.snackbar-container{
-    position: absolute;
-    bottom: 1rem;
-    right: 1rem;
-    overflow: hidden;
-    z-index: 4;
-}
-
 .snackbar{
     background-color: rgb(34, 34, 34);
     display: flex;

@@ -3,7 +3,7 @@ import { useSnackbarStore } from "../../store/useSnackbarStore";
 
 const Snackbar = lazy(() => import("./Snackbar"));
 
-import classes from "./snackbar.module.css";
+import classes from "./snackbar-wrapper.module.css";
 
 export const SnackbarWrapper = () => {
   const snackbars = useSnackbarStore(({ snackbars }) => snackbars);
