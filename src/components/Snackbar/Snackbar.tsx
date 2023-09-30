@@ -1,10 +1,12 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, lazy, Suspense } from "react";
 import clsx from "clsx";
 
 import { CloseIcon } from "../Icons/CloseIcon";
-import { InfoCircleIcon } from "../Icons/InfoCircleIcon";
-import { InfoTriangleIcon } from "../Icons/InfoTriangleIcon";
+
 import classes from "./snackbar.module.css";
+
+const InfoCircleIcon = lazy(() => import("../Icons/InfoCircleIcon"));
+const InfoTriangleIcon = lazy(() => import("../Icons/InfoTriangleIcon"));
 
 import type { Snackbar as SnackbarType } from "../../types/index.types";
 
@@ -26,7 +28,7 @@ const assetsByVariationMap = {
   },
 } as const;
 
-export const Snackbar = ({
+const Snackbar = ({
   snackbar,
   onClose,
 }: {
@@ -75,8 +77,12 @@ export const Snackbar = ({
         onClick={handleCloseSnackbar}
         title="Close snackbar"
       >
-        <CloseIcon color="rgba(255,255,255, 0.5)" />
+        <Suspense fallback="Loading icon">
+          <CloseIcon color="rgba(255,255,255, 0.5)" />
+        </Suspense>
       </button>
     </div>
   );
 };
+
+export default Snackbar;

@@ -31,47 +31,47 @@ export const monacoAppThemes = [
   {
     key: MonacoAppThemeKey.MONOKAI_BRIGHT,
     name: "Monokai Bright",
-    fetcher: import("monaco-themes/themes/Monokai Bright.json"),
+    fetchTheme: () => import("monaco-themes/themes/Monokai Bright.json"),
   },
   {
     key: MonacoAppThemeKey.GITHUB_DARK,
     name: "Github Dark",
-    fetcher: import("monaco-themes/themes/GitHub Dark.json"),
+    fetchTheme: () => import("monaco-themes/themes/GitHub Dark.json"),
   },
   {
     key: MonacoAppThemeKey.SOLARIZED_DARK,
     name: "Solarized Dark",
-    fetcher: import("monaco-themes/themes/Solarized-dark.json"),
+    fetchTheme: () => import("monaco-themes/themes/Solarized-dark.json"),
   },
   {
     key: MonacoAppThemeKey.DRACULA,
     name: "Dracula",
-    fetcher: import("monaco-themes/themes/Dracula.json"),
+    fetchTheme: () => import("monaco-themes/themes/Dracula.json"),
   },
   {
     key: MonacoAppThemeKey.NIGHT_OWL,
     name: "Night Owl",
-    fetcher: import("monaco-themes/themes/Night Owl.json"),
+    fetchTheme: () => import("monaco-themes/themes/Night Owl.json"),
   },
   {
     key: MonacoAppThemeKey.CHROME_DEV_TOOLS,
     name: "Chrome dev tools",
-    fetcher: import("monaco-themes/themes/Chrome DevTools.json"),
+    fetchTheme: () => import("monaco-themes/themes/Chrome DevTools.json"),
   },
   {
     key: MonacoAppThemeKey.ACTIVE_4D,
     name: "Active 4D",
-    fetcher: import("monaco-themes/themes/Active4D.json"),
+    fetchTheme: () => import("monaco-themes/themes/Active4D.json"),
   },
   {
     key: MonacoAppThemeKey.TOMORROW,
     name: "Tomorrow",
-    fetcher: import("monaco-themes/themes/Tomorrow.json"),
+    fetchTheme: () => import("monaco-themes/themes/Tomorrow.json"),
   },
   {
     key: MonacoAppThemeKey.TOMORROW_NIGHT,
     name: "Tomorrow Night",
-    fetcher: import("monaco-themes/themes/Tomorrow-Night.json"),
+    fetchTheme: () => import("monaco-themes/themes/Tomorrow-Night.json"),
   },
 ];
 

@@ -1,7 +1,7 @@
 import { DEFAULT_ICON_PROPS } from "../../constants";
 import type { IconProps } from "../../types/index.types";
 
-export const InfoTriangleIcon = ({
+const InfoTriangleIcon = ({
   color = DEFAULT_ICON_PROPS.color,
   outline = DEFAULT_ICON_PROPS.outline,
 }: IconProps) => {
@@ -48,3 +48,4 @@ export const InfoTriangleIcon = ({
     </svg>
   );
 };
+export default InfoTriangleIcon;

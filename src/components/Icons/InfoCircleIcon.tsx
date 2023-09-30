@@ -1,7 +1,7 @@
 import { DEFAULT_ICON_PROPS } from "../../constants";
 import type { IconProps } from "../../types/index.types";
 
-export const InfoCircleIcon = ({
+const InfoCircleIcon = ({
   color = DEFAULT_ICON_PROPS.color,
   outline = DEFAULT_ICON_PROPS.outline,
 }: IconProps) => {
@@ -48,3 +48,5 @@ export const InfoCircleIcon = ({
     </svg>
   );
 };
+
+export default InfoCircleIcon;

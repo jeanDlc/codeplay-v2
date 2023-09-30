@@ -1,6 +1,7 @@
+import { lazy, Suspense } from "react";
 import { useSnackbarStore } from "../../store/useSnackbarStore";
 
-import { Snackbar } from "./Snackbar";
+const Snackbar = lazy(() => import("./Snackbar"));
 
 import classes from "./snackbar.module.css";
 
@@ -10,9 +11,11 @@ export const SnackbarWrapper = () => {
 
   return (
     <div className={classes["snackbar-container"]}>
-      {snackbars.map((al) => (
-        <Snackbar snackbar={al} key={al.id} onClose={removeSnackbar} />
-      ))}
+      <Suspense fallback="Loading snackbars">
+        {snackbars.map((al) => (
+          <Snackbar snackbar={al} key={al.id} onClose={removeSnackbar} />
+        ))}
+      </Suspense>
     </div>
   );
 };

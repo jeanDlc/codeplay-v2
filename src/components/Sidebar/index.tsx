@@ -1,15 +1,16 @@
-import { useRef } from "react";
+import { useRef, lazy, Suspense } from "react";
 import { clsx } from "clsx";
 
 import { PageIcon } from "../Icons/PageIcon";
 import { SettingsIcon } from "../Icons/SettingsIcon";
 import classes from "./sidebar.module.css";
 import { useState } from "react";
-import { Settings } from "../Settings";
 import { RedirectionIcon } from "../Icons/RedirectionIcon";
 import { usePreview } from "../../hooks/usePreview";
 import { ClipBoardIcon } from "../Icons/ClipBoardIcon";
 import { useSnackbarStore } from "../../store/useSnackbarStore";
+
+const Settings = lazy(() => import("../Settings"));
 
 type View = "playground" | "settings";
 
@@ -108,7 +109,9 @@ export const Sidebar = () => {
         </footer>
       </div>
       <div ref={toolBarRef} className={classes.settingsContainer}>
-        <Settings />
+        <Suspense fallback={"Loading"}>
+          {currentView === "settings" && <Settings />}
+        </Suspense>
       </div>
     </aside>
   );

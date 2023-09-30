@@ -2,7 +2,7 @@ import { useEditorSettingsStore } from "../../store/useSettingStore";
 import { SettingsOptionsByType } from "./options";
 import classes from "./settings.module.css";
 
-export const Settings = () => {
+const Settings = () => {
   const changeSetting = useEditorSettingsStore((state) => state.changeSetting);
   const settings = useEditorSettingsStore((state) => state.settings);
 
@@ -52,3 +52,4 @@ export const Settings = () => {
     </main>
   );
 };
+export default Settings;
