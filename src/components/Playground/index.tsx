@@ -52,36 +52,43 @@ export function Playground() {
 
   return (
     <main className="playground-container">
-      <Editor
-        defaultLanguage="html"
-        theme={settings.theme}
-        value={values.html}
-        onChange={(value) => {
-          handleUpdate("html", value);
-        }}
-        options={settings}
-        className="editor editor-html"
-      />
-      <Editor
-        theme={settings.theme}
-        defaultLanguage="javascript"
-        options={settings}
-        value={values.js}
-        onChange={(value) => {
-          handleUpdate("js", value);
-        }}
-        className="editor editor-js"
-      />
-      <Editor
-        theme={settings.theme}
-        defaultLanguage="css"
-        options={settings}
-        value={values.css}
-        onChange={(value) => {
-          handleUpdate("css", value);
-        }}
-        className="editor editor-css"
-      />
+      <div className="editor-container editor-container-html">
+        <Editor
+          defaultLanguage="html"
+          theme={settings.theme}
+          value={values.html}
+          onChange={(value) => {
+            handleUpdate("html", value);
+          }}
+          options={settings}
+          className="editor"
+        />
+      </div>
+      <div className="editor-container editor-container-js">
+        <Editor
+          theme={settings.theme}
+          defaultLanguage="javascript"
+          options={settings}
+          value={values.js}
+          onChange={(value) => {
+            handleUpdate("js", value);
+          }}
+          className="editor"
+        />
+      </div>
+      <div className="editor-container editor-container-css">
+        <Editor
+          theme={settings.theme}
+          defaultLanguage="css"
+          options={settings}
+          value={values.css}
+          onChange={(value) => {
+            handleUpdate("css", value);
+          }}
+          className="editor"
+        />
+      </div>
+
       <iframe title="Preview of the code" srcDoc={iFrameData}></iframe>
     </main>
   );

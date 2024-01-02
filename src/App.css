@@ -25,12 +25,18 @@ iframe{
   background-color: white;
 }
 
+
 .editor {
+  /*! --- workaround for the resize issue --- */
+  position: absolute;
+  height: 100%;
+  /*! -------------------------------------- */
+}
+.editor-container{
   position: relative;
-  overflow: hidden;
 }
 
-.editor::after {
+.editor-container::after {
   position: absolute;
   content: "";
   bottom: 1rem;
@@ -39,13 +45,16 @@ iframe{
   height: 3rem;
   background-repeat: no-repeat;
 }
-.editor-html::after {
+
+.editor-container-html::after {
   background-image: url("./assets/html.svg");
 }
-.editor-css::after {
+
+.editor-container-css:after {
   background-image: url("./assets/css.svg");
 }
-.editor-js::after {
+
+.editor-container-js:after {
   background-image: url("./assets/js.svg");
 }
 
