@@ -31,6 +31,12 @@ self.MonacoEnvironment = {
 
 loader.config({ monaco: monacoEditor });
 
+const languageMap: Record<keyof EditorValues, string> = {
+  css: "css",
+  html: "html",
+  js: "javascript",
+};
+
 const Editor = ({ lang }: { lang: keyof EditorValues }) => {
   const monaco = useMonaco();
 
@@ -55,7 +61,7 @@ const Editor = ({ lang }: { lang: keyof EditorValues }) => {
       }`}
     >
       <MonacoEditor
-        defaultLanguage={lang}
+        defaultLanguage={languageMap[lang]}
         theme={settings.theme}
         value={values[lang]}
         onChange={(value) => {
