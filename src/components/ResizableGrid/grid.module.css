@@ -1,0 +1,18 @@
+.grid{
+    display: grid;
+    grid-template-columns: 1fr 10px 1fr;
+    grid-template-rows: 1fr 10px 1fr;
+    height: 100%;
+}
+
+.vertical-gutter {
+    cursor: col-resize;
+    grid-area: 1 / 2 / 4 / 2;
+    background-color: var(--dark-primary);
+}
+
+.horizontal-gutter {
+    cursor: row-resize;
+    grid-area: 2 / 1 / 3 / 4;
+    background-color: var(--dark-primary);
+}

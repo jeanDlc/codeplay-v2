@@ -1,0 +1,32 @@
+.editor {
+    /*! --- workaround for the resize issue --- */
+    position: absolute;
+    height: 100%;
+    /*! -------------------------------------- */
+}
+.editor-container{
+    position: relative;
+    height: 100%;
+}
+
+.editor-container::after {
+    position: absolute;
+    content: "";
+    bottom: 1rem;
+    right: 1rem;
+    width: 3rem;
+    height: 3rem;
+    background-repeat: no-repeat;
+}
+
+.editor-container-html::after {
+    background-image: url("../../assets/html.svg");
+}
+
+.editor-container-css:after {
+    background-image: url("../../assets/css.svg");
+}
+
+.editor-container-js:after {
+    background-image: url("../../assets/js.svg");
+}

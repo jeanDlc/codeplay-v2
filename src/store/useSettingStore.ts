@@ -7,13 +7,14 @@ import { EDITOR_COMMON_OPTIONS, MonacoAppThemeKey } from "../constants";
 
 type Settings = NonNullable<EditorProps["options"]>;
 
-const INITIAL_STATE = {
+const INITIAL_STATE: Settings = {
   fontSize: 17,
   lineNumbers: "off",
   wordWrap: "off",
   tabSize: 4,
   cursorStyle: "line",
   theme: MonacoAppThemeKey.VS_DARK,
+  automaticLayout: true,
 } as const;
 
 const INITIAL_SETTINGS: Settings = {

@@ -9,44 +9,11 @@
   position: relative;
 }
 
-
-
-.playground-container{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 10px;
-}
-
 iframe{
   border: none;
   width: 100%;
   height: 100%;
   background-color: white;
-}
-
-.editor {
-  position: relative;
-  overflow: hidden;
-}
-
-.editor::after {
-  position: absolute;
-  content: "";
-  bottom: 1rem;
-  right: 1rem;
-  width: 3rem;
-  height: 3rem;
-  background-repeat: no-repeat;
-}
-.editor-html::after {
-  background-image: url("./assets/html.svg");
-}
-.editor-css::after {
-  background-image: url("./assets/css.svg");
-}
-.editor-js::after {
-  background-image: url("./assets/js.svg");
 }
 
 .app input, select{
